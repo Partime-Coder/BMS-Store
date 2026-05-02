@@ -8,6 +8,8 @@ import { Provider } from 'react-redux'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Login from './pages/authPages/Login.jsx'
 import SignUp from './pages/authPages/SignUp.jsx'
+import SearchPage from './pages/storePages/SearchPage.jsx'
+
 
 const router = createBrowserRouter([
   {
@@ -17,6 +19,10 @@ const router = createBrowserRouter([
       {
         path: "",
         element: <Home />,
+      },
+      {
+        path: "/search",
+        element: <SearchPage />,
       }
     ]
   },

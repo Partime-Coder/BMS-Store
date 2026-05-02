@@ -22,7 +22,7 @@ import ScrollToTop from "./utility/ScrollToTop";
 import LoginForm from "./form/LoginForm";
 import SignupForm from "./form/SignupForm";
 
-
+import ProductCard from "./cardUI/ProductCard";
 
 
 export {
@@ -43,5 +43,6 @@ export {
     Navbar,
     LoginForm,
     SignupForm,
-    ProfileButton
+    ProfileButton,
+    ProductCard
 }
