@@ -18,4 +18,6 @@ export const normalizeProduct = (raw) => ({
   inStock: raw.stock > 0,
 });
 
+export const filterBySlug = (products = [], slug) => 
+  products.filter((p) => p.category === slug);
 

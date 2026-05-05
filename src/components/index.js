@@ -23,6 +23,8 @@ import LoginForm from "./form/LoginForm";
 import SignupForm from "./form/SignupForm";
 
 import ProductCard from "./cardUI/ProductCard";
+import ProductGridCard from "./cardUI/ProductGridCard";
+
 
 
 export {
@@ -44,5 +46,6 @@ export {
     LoginForm,
     SignupForm,
     ProfileButton,
-    ProductCard
+    ProductCard,
+    ProductGridCard
 }
