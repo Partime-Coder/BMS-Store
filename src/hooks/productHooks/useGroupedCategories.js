@@ -1,35 +1,34 @@
+import { useMemo } from "react";
 import { categoryGroupConfig } from "../../config/categoryGroupsData";
 import { useGetProductsQuery } from "../../features/product/productApiSlice";
 
 export const useGroupedCategories = (groupSlug) => {
-  const { data, isLoading, isError, error } = useGetProductsQuery({
-    limit: 194,
-  });
 
-  const products = data?.products || [];
+  const { data, isLoading, isError, error } = useGetProductsQuery({ limit: 194 });
 
-  const group = categoryGroupConfig.find(
-    g => g.slug === groupSlug
-  );
+  const { groupedCategories, groupTitle } = useMemo(() => {
+    if (!data?.products) return { groupedCategories: [], groupTitle: "" };
 
-  if (!group) {
+    const group = categoryGroupConfig.find((g) => g.slug === groupSlug);
+
+  
+    if (!group) return { groupedCategories: [], groupTitle: "" };
+
+    const groupedCategories = data.products.filter((p) =>
+      group.categories.includes(p.category)
+    );
+
     return {
-      groupedCategories: [],
-      isLoading,
-      isError,
-      error,
+      groupedCategories,
+      groupTitle: group.title,
     };
-  }
-
-  const groupedCategories = products.filter(product =>
-    group.categories.includes(product.category)
-  );
+  }, [data, groupSlug]);
 
   return {
     groupedCategories,
-    groupTitle: group.title,
+    groupTitle,
     isLoading,
     isError,
-    error,
+    error: error ?? null,
   };
 };

@@ -4,8 +4,10 @@ const createBanner = ({
   id,
   title,
   subtitle,
+  image,
   ctaText = "Shop Now",
   ctaLink = "/",
+  bgColor,
 }) => ({
   id,
   type: "banner",
@@ -16,6 +18,8 @@ const createBanner = ({
     subtitle,
     ctaText,
     ctaLink,
+    image,
+    bgColor
   },
 });
 
@@ -24,7 +28,7 @@ const createSlider = ({
   title,
   products = [],
   slug,
-  limit = 10,
+  limit = 12,
   viewAllLink = "/",
 }) => {
   const filtered = slug ? filterBySlug(products, slug) : products;

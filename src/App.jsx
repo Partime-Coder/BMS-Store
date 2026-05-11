@@ -16,7 +16,7 @@ function App() {
   return (
     <div className="w-full min-h-screen flex flex-col">
       <Header />
-      <main className="flex-1">
+      <main className="flex-1 bg-gray-100">
         <Container>
           <Outlet />
         </Container>

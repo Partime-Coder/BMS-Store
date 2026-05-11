@@ -1,50 +1,43 @@
 import React from 'react'
+import {Loader} from '../index.js'
 
-function ProductGridCard({
-  title,
-  items = [],
-  linkText = "Explore all",
-  onClickItem,
-}) {
+function ProductGridCard({ id, sections, title, isLoading }) {
+  const section = sections.find(s => s.id === id)
+  const products = section?.data?.products ?? []
+
   return (
-    <div className="bg-white p-4 rounded shadow-sm flex flex-col gap-3">
+    <div className="bg-white p-4 w-full flex flex-col min-h-122.5 sm:min-h-104">
 
-      {/* Title */}
-      <h2 className="text-base font-semibold text-gray-900">
+      <h3 className="text-lg font-bold text-gray-900 mb-3">
         {title}
-      </h2>
+      </h3>
 
-      {/* Grid */}
-      <div className="grid grid-cols-2 gap-3">
-        {items.slice(0, 4).map((item) => (
-          <div
-            key={item.id}
-            className="flex flex-col gap-1 cursor-pointer"
-            onClick={() => onClickItem?.(item)}
-          >
-            {/* Image */}
-            <div className="w-full aspect-square bg-gray-100 flex items-center justify-center">
-              <img
-                src={item.image}
-                alt={item.title}
-                className="max-h-full object-contain"
-              />
+      {isLoading ? (
+        <div className="flex-1 flex items-center justify-center">
+          <Loader />
+        </div>
+      ) : (
+        <div className="grid grid-cols-2 gap-3 w-full flex-1">
+          {products.slice(0, 4).map((product) => (
+            <div key={product.id}>
+              <div className="aspect-square overflow-hidden mb-1">
+                <img
+                  src={product.thumbnail}
+                  className="w-full h-full object-contain p-2"
+                />
+              </div>
+              <p className="text-xs truncate">{product.title}</p>
             </div>
+          ))}
+        </div>
+      )}
 
-            {/* Title */}
-            <p className="text-xs text-gray-800 line-clamp-2">
-              {item.title}
-            </p>
-          </div>
-        ))}
-      </div>
+      <p className="mt-4 text-sm text-blue-600 cursor-pointer hover:underline hover:text-amber-500">
+        explore more
+      </p>
 
-      {/* Footer */}
-      <button className="text-sm text-[#007185] text-left hover:underline mt-1">
-        {linkText}
-      </button>
     </div>
-  );
+  )
 }
 
 export default ProductGridCard

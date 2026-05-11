@@ -18,12 +18,21 @@ import Input from "./utility/Input";
 import Logo from "./utility/Logo";
 import BrandLogo from "./utility/BrandLogo";
 import ScrollToTop from "./utility/ScrollToTop";
+import Loader from "./utility/Loader";
+
 
 import LoginForm from "./form/LoginForm";
 import SignupForm from "./form/SignupForm";
 
 import ProductCard from "./cardUI/ProductCard";
 import ProductGridCard from "./cardUI/ProductGridCard";
+import ProductBannerCard from "./cardUI/ProductBannerCard";
+import ProductSliderCard from "./cardUI/ProductSliderCard";
+
+import GridLayout from "./layout/uiLayout/GridLayout";
+import GridItem from "./layout/uiLayout/GridItem";
+
+
 
 
 
@@ -47,5 +56,10 @@ export {
     SignupForm,
     ProfileButton,
     ProductCard,
-    ProductGridCard
+    ProductGridCard,
+    ProductBannerCard,
+    ProductSliderCard,
+    Loader,
+    GridLayout,
+    GridItem,
 }
