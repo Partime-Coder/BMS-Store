@@ -28,6 +28,8 @@ import ProductCard from "./cardUI/ProductCard";
 import ProductGridCard from "./cardUI/ProductGridCard";
 import ProductBannerCard from "./cardUI/ProductBannerCard";
 import ProductSliderCard from "./cardUI/ProductSliderCard";
+import HeroSlider from "./cardUI/HeroSlider";
+import HeroSlide from "./cardUI/HeroSlide";
 
 import GridLayout from "./layout/uiLayout/GridLayout";
 import GridItem from "./layout/uiLayout/GridItem";
@@ -62,4 +64,6 @@ export {
     Loader,
     GridLayout,
     GridItem,
+    HeroSlider,
+    HeroSlide
 }

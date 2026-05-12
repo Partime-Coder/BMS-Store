@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react'
 import { useHomepageData } from '../../hooks/productHooks/useHomepageData';
-import { ProductGridCard, ProductSliderCard, GridLayout, GridItem, ProductBannerCard} from '../../components';
-import { useGetCategoriesQuery, useGetProductsByCategoryQuery } from '../../features/product/productApiSlice';
+import { ProductGridCard, ProductSliderCard, GridLayout, GridItem, ProductBannerCard, HeroSlider, Container} from '../../components';
 import { useCategorypageData } from '../../hooks/productHooks/useCategorypageData';
+import { heroSliderConfig } from '../../config/heroSlidersData';
 
 
 
 
-function Home() {
+function HomePage() {
 
   // const {sections, products, isLoading ,isError , error} = useCategorypageData("electronics")
   //  console.log("Categorypage test data", { sections, products, isLoading, isError, error });
@@ -24,6 +24,9 @@ function Home() {
 
 
   return (
+    <>
+    <HeroSlider slides={heroSliderConfig.home} />
+    <Container>
     <div className='flex flex-col gap-5' >
       <GridLayout>
         <GridItem>
@@ -53,7 +56,9 @@ function Home() {
       <ProductSliderCard sections={sections} id={"smartphones-slider"} title={"Latest Smartphone"} isLoading={isLoading}/>
       <ProductSliderCard sections={sections} id={"mobile-accessories-slider"} title={'Make your life Easy'} isLoading={isLoading}/>
     </div>
+    </Container>
+    </>
   )
 }
 
-export default Home
+export default HomePage
