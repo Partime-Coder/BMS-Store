@@ -16,6 +16,7 @@ import {
     VehiclesPage,
     SportsPage,
     SearchPage,
+    ProductDetailPage,
     Login,
     SignUp
  } from './pages/index.js'
@@ -74,6 +75,10 @@ const router = createBrowserRouter([
         path: "/category/sports",
         element: <SportsPage />,
       },
+
+      { path: "/product/:id",
+        element: <ProductDetailPage />,
+      },  
     ]
   },
   {

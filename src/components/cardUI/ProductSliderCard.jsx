@@ -1,5 +1,7 @@
 import React, { useRef } from 'react'
 import { Loader } from '../index.js'
+import { Link } from 'react-router'
+
 
 function ProductSliderCard({ id, title, sections, linkText = "See more", viewAllLink , isLoading }) {
   const section = sections.find(s => s.id === id)
@@ -51,8 +53,9 @@ function ProductSliderCard({ id, title, sections, linkText = "See more", viewAll
             </div>
           ) : (
             products.map((product) => (
-              <div
+              <Link
                 key={product.id}
+                to={`/product/${product.id}`}
                 className="flex-none w-32 sm:w-40 cursor-pointer"
               >
                 <div className="aspect-square overflow-hidden">
@@ -63,7 +66,7 @@ function ProductSliderCard({ id, title, sections, linkText = "See more", viewAll
                     className="w-full h-full object-contain p-2"
                   />
                 </div>
-              </div>
+              </Link>
             ))
           )}
         </div>

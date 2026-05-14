@@ -1,5 +1,7 @@
 import React from 'react'
 import {Loader} from '../index.js'
+import { Link } from 'react-router'
+
 
 function ProductGridCard({ id, sections, title, isLoading }) {
   const section = sections.find(s => s.id === id)
@@ -18,8 +20,9 @@ function ProductGridCard({ id, sections, title, isLoading }) {
         </div>
       ) : (
         <div className="grid grid-cols-2 gap-3 w-full flex-1">
-          {products.slice(0, 4).map((product) => (
-            <div key={product.id}>
+          {products.map((product) => (
+            <Link key={product.id}
+              to={`/product/${product.id}`} >
               <div className="aspect-square overflow-hidden mb-1">
                 <img
                   src={product.thumbnail}
@@ -27,7 +30,7 @@ function ProductGridCard({ id, sections, title, isLoading }) {
                 />
               </div>
               <p className="text-xs truncate">{product.title}</p>
-            </div>
+            </Link>
           ))}
         </div>
       )}

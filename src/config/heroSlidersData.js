@@ -1,3 +1,7 @@
+import image from '../assets/images/iphone13hero.png'
+import imagetwo from '../assets/images/ipodhero.png'
+
+
 export const heroSliderConfig = {
   home: [
     {
@@ -28,14 +32,13 @@ export const heroSliderConfig = {
 
     {
       id: 3,
-      title: "Fresh Fashion Drop 👕",
+      title: "Latest IPhone 13",
       subtitle: "Trending styles for every season",
-      image:
-        "https://cdn.dummyjson.com/product-images/mens-shirts/man-plaid-shirt/1.webp",
+      image: image,
       bgColor: "#DBEAFE",
       titleColor: "#1E3A8A",
       subtitleColor: "#1D4ED8",
-      ctaText: "Discover",
+      ctaText: "see detail",
       ctaLink: "/mens-fashion",
     },
 
@@ -67,14 +70,13 @@ export const heroSliderConfig = {
 
     {
       id: 6,
-      title: "Drive in Style 🏍️",
-      subtitle: "Premium bikes & accessories",
-      image:
-        "https://cdn.dummyjson.com/product-images/motorcycle/generic-motorcycle/1.webp",
+      title: "Song in Style",
+      subtitle: "Premium Iphone & accessories",
+      image:imagetwo,
       bgColor: "#ECFEFF",
       titleColor: "#155E75",
       subtitleColor: "#0891B2",
-      ctaText: "Ride Now",
+      ctaText: "listen Now",
       ctaLink: "/vehicles",
     },
 

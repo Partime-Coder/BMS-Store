@@ -4,10 +4,12 @@ import GroceriesPage from "./storePages/GroceriesPage";
 import HomeLivingPage from "./storePages/HomeLivingPage";
 import HomePage from "./storePages/HomePage";
 import MensFashionPage from "./storePages/MensFashionPage";
-import SearchPage from "./storePages/SearchPage";
 import SportsPage from "./storePages/SportsPage";
 import VehiclesPage from "./storePages/VehiclesPage";
 import WomensFashionPage from "./storePages/WomensFashionPage";
+
+import SearchPage from "./productPages/SearchPage";
+import ProductDetailPage from "./productPages/ProductDetailPage";
 
 import Login from "./authPages/Login";
 import SignUp from "./authPages/SignUp";
@@ -23,6 +25,7 @@ export{
     VehiclesPage,
     SportsPage,
     SearchPage,
+    ProductDetailPage,
     Login,
-    SignUp
+    SignUp,
 }

@@ -34,7 +34,9 @@ import HeroSlide from "./cardUI/HeroSlide";
 import GridLayout from "./layout/uiLayout/GridLayout";
 import GridItem from "./layout/uiLayout/GridItem";
 
-
+import ProductDetail from "./pageUI/productDetailPageUI/ProductDetail";
+import ProductAction from "./pageUI/productDetailPageUI/ProductAction";
+import ProductReview from "./pageUI/productDetailPageUI/ProductReview";
 
 
 
@@ -65,5 +67,8 @@ export {
     GridLayout,
     GridItem,
     HeroSlider,
-    HeroSlide
+    HeroSlide,
+    ProductDetail,
+    ProductAction,
+    ProductReview,
 }

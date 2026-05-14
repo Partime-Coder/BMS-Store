@@ -16,8 +16,17 @@ export const normalizeProduct = (raw) => ({
   thumbnail: raw.thumbnail,
   images: raw.images ?? [],
   inStock: raw.stock > 0,
+  availabilityStatus: raw.availabilityStatus ?? "Unknown",
+  warrantyInformation: raw.warrantyInformation ?? null,
+  shippingInformation: raw.shippingInformation ?? null,
+  returnPolicy: raw.returnPolicy ?? null,
+  minimumOrderQuantity: raw.minimumOrderQuantity ?? 1,
+  tags: raw.tags ?? [],
+  reviews: raw.reviews ?? [],
+  weight: raw.weight ?? null,
+  dimensions: raw.dimensions ?? null,
 });
 
-export const filterBySlug = (products = [], slug) => 
+export const filterBySlug = (products = [], slug) =>
   products.filter((p) => p.category === slug);
 
