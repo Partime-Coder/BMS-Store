@@ -246,32 +246,30 @@ export const categoryPageConfig = {
   ],
 
   vehicles: [
-    {
-      id: "vehicle-banner",
-      type: "banner",
-      title: "Vehicles & Bikes 🏍️",
-      subtitle: "Ride with power",
-      ctaText: "Explore Vehicles",
-      ctaLink: "/category/vehicles",
-    },
-
-    {
-      id: "motorcycle-grid",
-      type: "grid",
-      title: "Motorcycles",
-      slug: "motorcycle",
-      limit: 8,
-      viewAllLink: "/category/motorcycle",
-    },
-
-    {
-      id: "vehicle-grid",
-      type: "grid",
-      title: "Other Vehicles",
-      slug: "vehicle",
-      limit: 8,
-      viewAllLink: "/category/vehicle",
-    },
+      {
+    id: "bike-grid",
+    type: "grid",
+    slug: "motorcycle",
+    start: 0,
+    viewAllLink: "/",
+  },
+  {
+    id: "car-grid",
+    type: "grid",
+    slug: "vehicle",
+    start: 0,
+    viewAllLink: "/",
+  },
+   {
+    id: "hero-banner",
+    type: "banner",
+    title: "Big Summer Sale ",
+    subtitle: "Up to 50% off on top brands",
+    ctaText: "Shop Now",
+    ctaLink: "/products",
+    bgColor: "#FFE5D4",
+    image: "https://cdn.dummyjson.com/product-images/smartphones/iphone-5s/thumbnail.webp"
+  },
   ],
 
   sports: [

@@ -51,11 +51,18 @@ const createGrid = ({
   title,
   products = [],
   slug,
+  start = 0,
   limit = 4,
   viewAllLink = "/",
 }) => {
-  const filtered = slug ? filterBySlug(products, slug) : products;
-  const sliced = filtered.slice(0, limit);
+  const filtered = slug
+    ? filterBySlug(products, slug)
+    : products;
+
+  const sliced = filtered.slice(
+    start,
+    start + limit
+  );
 
   return {
     id,

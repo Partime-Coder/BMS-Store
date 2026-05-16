@@ -35,9 +35,9 @@ function ProductGridCard({ id, sections, title, isLoading }) {
         </div>
       )}
 
-      <p className="mt-4 text-sm text-blue-600 cursor-pointer hover:underline hover:text-amber-500">
+      <Link to={section?.viewAllLink} className="mt-4 text-sm text-blue-600 cursor-pointer hover:underline hover:text-amber-500">
         explore more
-      </p>
+      </Link>
 
     </div>
   )
