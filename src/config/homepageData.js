@@ -1,75 +1,58 @@
 
 export const homepageConfig = [
-  // {
-  //   id: "hero-banner",
-  //   type: "banner",
-  //   title: "Big Summer Sale ",
-  //   subtitle: "Up to 50% off on top brands",
-  //   ctaText: "Shop Now",
-  //   ctaLink: "/products",
-  //   bgColor: "#FFE5D4",
-  //   image: "https://cdn.dummyjson.com/product-images/smartphones/iphone-5s/thumbnail.webp"
-  // },
-  // {
-  //   id: "smartphones-slider",
-  //   type: "slider",
-  //   title: "Best Smartphones",
-  //   slug: "smartphones",
-  //   limit: 12,
-  //   viewAllLink: "/category/smartphones",
-  // },
-  // {
-  //   id: "mobile-accessories-slider",
-  //   type: "slider",
-  //   title: "mobile-accessories",
-  //   slug: "mobile-accessories",
-  //   limit: 12,
-  //   viewAllLink: "/category/smartphones",
-  // },
-  // {
-  //   id: "smartphones-grid",
-  //   type: "grid",
-  //   title: "smartphones Deals",
-  //   slug: "smartphones",
-  //   start: 4,
-  //   viewAllLink: "/category/furniture",
-  // },
-  // {
-  //   id: "furniture-grid",
-  //   type: "grid",
-  //   title: "Furniture Deals",
-  //   slug: "furniture",
-  //   start: 4,
-  //   viewAllLink: "/category/furniture",
-  // },
-  // {
-  //   id: "mobile-accessories-grid",
-  //   type: "grid",
-  //   title: "mobile-accessories Deals",
-  //   slug: "mobile-accessories",
-  //   start: 4,
-  //   viewAllLink: "/category/furniture",
-  // },
-  // {
-  //   id: "groceries-grid",
-  //   type: "grid",
-  //   title: "groceries Deals",
-  //   slug: "groceries",
-  //   start:16,
-  //   viewAllLink: "/category/furniture",
-  // },
-
-  // Banner section
+  // Banner Section
   {
-    id: "hero-banner",
-    type: "banner",
-    title: "Big Summer Sale ",
-    subtitle: "Up to 50% off on top brands",
-    ctaText: "Shop Now",
-    ctaLink: "/products",
-    bgColor: "#FFE5D4",
-    image: "https://cdn.dummyjson.com/product-images/smartphones/iphone-5s/thumbnail.webp"
-  },
+  id: "Beauty-banner",
+  type: "banner",
+  title: "Glow Up Essentials",
+  subtitle: "Skincare & beauty picks for your daily routine",
+  ctaText: "Shop Beauty",
+  ctaLink: "/products",
+  bgColor: "#FDE2E4",
+  titleColor: "#BE185D",
+  subtitleColor: "#9D174D",
+  image: "https://cdn.dummyjson.com/product-images/skin-care/attitude-super-leaves-hand-soap/1.webp"
+},
+
+{
+  id: "Electronics-banner",
+  type: "banner",
+  title: "Upgrade Your Tech",
+  subtitle: "Latest gadgets, laptops & smart devices",
+  ctaText: "Explore Tech",
+  ctaLink: "/products",
+  bgColor: "#DDEBFF",
+  titleColor: "#1E40AF",
+  subtitleColor: "#1D4ED8",
+  image: "https://cdn.dummyjson.com/product-images/laptops/asus-zenbook-pro-dual-screen-laptop/3.webp"
+},
+
+{
+  id: "Men's-banner",
+  type: "banner",
+  title: "Built For Everyday Style",
+  subtitle: "Fresh drops in fashion, shoes & accessories",
+  ctaText: "Shop Men's",
+  ctaLink: "/products",
+  bgColor: "#E7F5E8",
+  titleColor: "#166534",
+  subtitleColor: "#15803D",
+  image: "https://cdn.dummyjson.com/product-images/mens-shoes/nike-baseball-cleats/2.webp"
+},
+
+{
+  id: "Vehicles-banner",
+  type: "banner",
+  title: "Feel The Speed",
+  subtitle: "Discover bikes and machines made to perform",
+  ctaText: "Explore Vehicles",
+  ctaLink: "/products",
+  bgColor: "#EAE4FF",
+  titleColor: "#6D28D9",
+  subtitleColor: "#7C3AED",
+  image: "https://cdn.dummyjson.com/product-images/motorcycle/kawasaki-z800/1.webp"
+},
+
 
   // Grid
   {
@@ -248,13 +231,6 @@ export const homepageConfig = [
     limit: 12,
     viewAllLink: "/",
   },
-  // {
-  //   id: "sunglasses-slider",
-  //   type: "slider",
-  //   slug: "sunglasses",
-  //   limit: 12,
-  //   viewAllLink: "/",
-  // },
   {
     id: "sports-slider",
     type: "slider",

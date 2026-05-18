@@ -9,13 +9,6 @@ import { heroSliderConfig } from '../../config/heroSlidersData';
 
 function HomePage() {
 
-  // const {sections, products, isLoading ,isError , error} = useCategorypageData("electronics")
-  //  console.log("Categorypage test data", { sections, products, isLoading, isError, error });
-
-
-
-
-
   const { sections, isLoading, isError, error } = useHomepageData();
   console.log("homepage test data", { sections, isLoading, isError, error });
 
@@ -65,7 +58,7 @@ function HomePage() {
           <ProductGridCard sections={sections} title={"New gen Tablets"} isLoading={isLoading} id={"tablet-grid"} />
         </GridItem>
         <GridItem span='col-span-1 sm:col-span-2'>
-         <ProductBannerCard id={"hero-banner"} sections={sections} isLoading={isLoading}/>
+         <ProductBannerCard id={"Electronics-banner"} sections={sections} isLoading={isLoading}/>
         </GridItem>
       </GridLayout>
 
@@ -73,13 +66,13 @@ function HomePage() {
       
       <GridLayout>
          <GridItem>
-          <ProductGridCard sections={sections} title={ "Smart Laptops "} isLoading={isLoading} id={ "beautyProducts-grid"} />
+          <ProductGridCard sections={sections} title={ "Everyday Beauty "} isLoading={isLoading} id={ "beautyProducts-grid"} />
         </GridItem>
         <GridItem>
-          <ProductGridCard sections={sections} title={"New gen Tablets"} isLoading={isLoading} id={"skincare-grid"} />
+          <ProductGridCard sections={sections} title={"Skincare Must-Haves"} isLoading={isLoading} id={"skincare-grid"} />
         </GridItem>
         <GridItem span='col-span-1 sm:col-span-2'>
-         <ProductBannerCard id={"hero-banner"} sections={sections} isLoading={isLoading}/>
+         <ProductBannerCard id={"Beauty-banner"} sections={sections} isLoading={isLoading}/>
         </GridItem>
       </GridLayout>
 
@@ -106,7 +99,7 @@ function HomePage() {
           <ProductGridCard sections={sections} title={"Men's Shoes"} isLoading={isLoading} id={"mens-shoes-grid"} />
         </GridItem>
         <GridItem span='col-span-1 sm:col-span-2'>
-         <ProductBannerCard id={"hero-banner"} sections={sections} isLoading={isLoading}/>
+         <ProductBannerCard id={"Men's-banner"} sections={sections} isLoading={isLoading}/>
         </GridItem>
       </GridLayout>
 
@@ -122,7 +115,7 @@ function HomePage() {
           <ProductGridCard sections={sections} title={"Latest Cars"} isLoading={isLoading} id={"car-grid"} />
         </GridItem>
         <GridItem span='col-span-1 sm:col-span-2'>
-         <ProductBannerCard id={"hero-banner"} sections={sections} isLoading={isLoading}/>
+         <ProductBannerCard id={"Vehicles-banner"} sections={sections} isLoading={isLoading}/>
         </GridItem>
       </GridLayout>
 

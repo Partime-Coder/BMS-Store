@@ -1,5 +1,5 @@
 import React from 'react'
-import { ProductGridCard, ProductSliderCard, GridLayout, GridItem, ProductBannerCard, HeroSlider, Container } from '../../components';
+import { ProductGridCard, ProductSliderCard, GridLayout, GridItem, ProductBannerCard, HeroSlider, Container, ProductVerticalCard } from '../../components';
 import { useCategorypageData } from '../../hooks/productHooks/useCategorypageData';
 import { heroSliderConfig } from '../../config/heroSlidersData';
 
@@ -18,8 +18,18 @@ function VehiclesPage() {
                             <ProductGridCard sections={sections} title={"Latest Cars"} isLoading={isLoading} id={"car-grid"} />
                         </GridItem>
                         <GridItem span='col-span-1 sm:col-span-2'>
-                            <ProductBannerCard id={"hero-banner"} sections={sections} isLoading={isLoading} />
+                            <ProductBannerCard id={"Vehicles-banner"} sections={sections} isLoading={isLoading} />
                         </GridItem>
+                    </GridLayout>
+
+                    <GridLayout isProductGrid={true}>
+                        {products?.map((product) => (
+                            <GridItem key={product.id}>
+                                <ProductVerticalCard
+                                    product={product}
+                                />
+                            </GridItem>
+                        ))}
                     </GridLayout>
                 </div>
             </Container>

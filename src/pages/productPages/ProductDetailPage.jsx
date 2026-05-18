@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { ProductDetail, ProductAction, ProductReview, SimillerProductSliderCard } from '../../components'
+import { ProductDetail, ProductAction, ProductReview, SimillerProductSliderCard, Loader } from '../../components'
 import { useParams } from 'react-router-dom'
 import { useGetProductByIdQuery, useGetProductsByCategoryQuery } from '../../features/product/productApiSlice'
- 
+
 
 function ProductDetailPage() {
   const { id } = useParams()
@@ -21,9 +21,15 @@ function ProductDetailPage() {
     })
   }, [id]);
 
-  if (isLoading) return <p className="p-4">Loading...</p>
+  if (isLoading) {
+    return (
+      <div className="flex flex-1 items-center justify-center min-h-screen">
+        <Loader />
+      </div>
+    )
+  }
   if (isError || !product) return <p className="p-4 text-red-500">Product not found.</p>
-  console.log("data", SimillerProducts);
+
 
   return (
     <div className=" w-full md:max-w-7xl px-1.5 md:mx-auto py-4">

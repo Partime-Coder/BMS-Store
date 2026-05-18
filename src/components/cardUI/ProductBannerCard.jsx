@@ -5,6 +5,8 @@ function ProductBannerCard({ id, sections, isLoading }) {
 
   const section = sections.find(s => s.id === id)
   const banner = section?.data || {}
+  console.log(banner)
+console.log(banner?.titleColor)
 
   return (
     <div
@@ -23,27 +25,40 @@ function ProductBannerCard({ id, sections, isLoading }) {
       ) : (
 
         <>
-          
+
           <div className="w-full sm:w-3/5">
 
-            <h2 className="text-3xl sm:text-5xl font-bold mb-3 text-[#9A3412] leading-tight">
+            <h2
+              className="text-3xl sm:text-5xl font-bold mb-3 leading-tight"
+              style={{
+                color: banner?.titleColor
+              }}
+            >
               {banner?.title}
             </h2>
 
-            <p className="text-sm sm:text-lg mb-5 text-[#7C2D12]">
+            <p
+              className="text-sm sm:text-lg mb-5"
+              style={{
+                color: banner?.subtitleColor
+              }}
+            >
               {banner?.subtitle}
             </p>
 
             <a
               href={banner?.ctaLink}
-              className="text-[#9A3412] font-semibold hover:underline"
+              className="font-semibold hover:underline"
+              style={{
+                color: banner?.titleColor
+              }}
             >
               {banner?.ctaText} →
             </a>
 
           </div>
 
-         
+
           <div className="w-full sm:w-2/5 flex justify-center">
 
             <img
@@ -57,7 +72,7 @@ function ProductBannerCard({ id, sections, isLoading }) {
 
       )}
 
-    </div>  
+    </div>
   )
 }
 

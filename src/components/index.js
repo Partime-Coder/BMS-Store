@@ -31,7 +31,7 @@ import ProductSliderCard from "./cardUI/ProductSliderCard";
 import HeroSlider from "./cardUI/HeroSlider";
 import HeroSlide from "./cardUI/HeroSlide";
 import SimillerProductSliderCard from "./cardUI/SimillerProductSliderCard";
-
+import ProductVerticalCard from "./cardUI/ProductVerticalCard";
 
 import GridLayout from "./layout/uiLayout/GridLayout";
 import GridItem from "./layout/uiLayout/GridItem";
@@ -39,6 +39,7 @@ import GridItem from "./layout/uiLayout/GridItem";
 import ProductDetail from "./pageUI/productDetailPageUI/ProductDetail";
 import ProductAction from "./pageUI/productDetailPageUI/ProductAction";
 import ProductReview from "./pageUI/productDetailPageUI/ProductReview";
+
 
 
 
@@ -73,5 +74,6 @@ export {
     ProductDetail,
     ProductAction,
     ProductReview,
-    SimillerProductSliderCard
+    SimillerProductSliderCard,
+    ProductVerticalCard
 }

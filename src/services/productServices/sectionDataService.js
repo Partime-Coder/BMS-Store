@@ -8,6 +8,8 @@ const createBanner = ({
   ctaText = "Shop Now",
   ctaLink = "/",
   bgColor,
+  titleColor,
+  subtitleColor,
 }) => ({
   id,
   type: "banner",
@@ -19,7 +21,9 @@ const createBanner = ({
     ctaText,
     ctaLink,
     image,
-    bgColor
+    bgColor,
+    titleColor,
+    subtitleColor
   },
 });
 

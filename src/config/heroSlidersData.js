@@ -1,98 +1,74 @@
-import image from '../assets/images/iphone13hero.png'
-import imagetwo from '../assets/images/ipodhero.png'
-
+import {
+  electronicIphone13,
+  electronicHeadphone,
+  groceriesMain,
+  menSummer,
+  womenSummer,
+} from '../assets/images/index.js'
 
 export const heroSliderConfig = {
-  home: [
-    {
-      id: 1,
-      title: "Big Summer Sale ☀️",
-      subtitle: "Up to 50% off on top brands",
-      image:
-        "https://cdn.dummyjson.com/product-images/smartphones/iphone-5s/1.webp",
-      bgColor: "#FFF7ED",
-      titleColor: "#C2410C",
-      subtitleColor: "#9A3412",
-      ctaText: "Shop Now",
-      ctaLink: "/products",
-    },
+  home:[
+  {
+    id: 1,
+    title: "iPhone 13 Pro",
+    subtitle: "Experience power, style & innovation",
+    image: electronicIphone13,
+    bgColor: "#DBEAFE",
+    titleColor: "#1E3A8A",
+    subtitleColor: "#2563EB",
+    ctaText: "Explore Now",
+    ctaLink: "/electronics",
+  },
 
-    {
-      id: 2,
-      title: "Gaming Beast Setup 🎮",
-      subtitle: "High performance laptops & accessories",
-      image:
-        "https://cdn.dummyjson.com/product-images/laptops/asus-rog/1.webp",
-      bgColor: "#111827",
-      titleColor: "#FFFFFF",
-      subtitleColor: "#D1D5DB",
-      ctaText: "Explore",
-      ctaLink: "/electronics",
-    },
+  {
+    id: 2,
+    title: "Beauty Essentials",
+    subtitle: "Glow every day with premium care",
+    image:
+      "https://cdn.dummyjson.com/product-images/skin-care/attitude-super-leaves-hand-soap/1.webp",
+    bgColor: "#FDF2F8",
+    titleColor: "#BE185D",
+    subtitleColor: "#DB2777",
+    ctaText: "Shop Beauty",
+    ctaLink: "/beauty",
+  },
 
-    {
-      id: 3,
-      title: "Latest IPhone 13",
-      subtitle: "Trending styles for every season",
-      image: image,
-      bgColor: "#DBEAFE",
-      titleColor: "#1E3A8A",
-      subtitleColor: "#1D4ED8",
-      ctaText: "see detail",
-      ctaLink: "/mens-fashion",
-    },
+  {
+    id: 3,
+    title: "BMS Fresh",
+    subtitle: "Farm-fresh groceries delivered daily",
+    image: groceriesMain,
+    bgColor: "#ECFDF5",
+    titleColor: "#166534",
+    subtitleColor: "#16A34A",
+    ctaText: "Shop Fresh",
+    ctaLink: "/groceries",
+  },
 
-    {
-      id: 4,
-      title: "Upgrade Your Home 🏠",
-      subtitle: "Furniture & decor made simple",
-      image:
-        "https://cdn.dummyjson.com/product-images/furniture/annibale-colombo-bed/1.webp",
-      bgColor: "#F5F3FF",
-      titleColor: "#5B21B6",
-      subtitleColor: "#7C3AED",
-      ctaText: "View Collection",
-      ctaLink: "/home-living",
-    },
+  {
+    id: 4,
+    title: "Summer Men's Collection",
+    subtitle: "Stay cool. Stay stylish.",
+    image: menSummer,
+    bgColor: "#FEF3C7",
+    titleColor: "#92400E",
+    subtitleColor: "#D97706",
+    ctaText: "Shop Men",
+    ctaLink: "/category/mens-fashion",
+  },
 
-    {
-      id: 5,
-      title: "Beauty Essentials ✨",
-      subtitle: "Glow with premium skincare",
-      image:
-        "https://cdn.dummyjson.com/product-images/skin-care/attitude-super-leaves-hand-soap/1.webp",
-      bgColor: "#FDF2F8",
-      titleColor: "#BE185D",
-      subtitleColor: "#DB2777",
-      ctaText: "Shop Beauty",
-      ctaLink: "/beauty",
-    },
-
-    {
-      id: 6,
-      title: "Song in Style",
-      subtitle: "Premium Iphone & accessories",
-      image:imagetwo,
-      bgColor: "#ECFEFF",
-      titleColor: "#155E75",
-      subtitleColor: "#0891B2",
-      ctaText: "listen Now",
-      ctaLink: "/vehicles",
-    },
-
-    {
-      id: 7,
-      title: "Fitness & Sports 🏀",
-      subtitle: "Gear up for every workout",
-      image:
-        "https://cdn.dummyjson.com/product-images/sports-accessories/baseball-ball/1.webp",
-      bgColor: "#F0FDF4",
-      titleColor: "#166534",
-      subtitleColor: "#16A34A",
-      ctaText: "Start Training",
-      ctaLink: "/sports",
-    },
-  ],
+  {
+    id: 5,
+    title: "Women's Summer Edit",
+    subtitle: "Fresh styles made for sunny days",
+    image: womenSummer,
+    bgColor: "#FFF1F2",
+    titleColor: "#9F1239",
+    subtitleColor: "#E11D48",
+    ctaText: "Shop Women",
+    ctaLink: "/category/womens-fashion",
+  },
+],
 
   beauty: [],
   electronics: [],

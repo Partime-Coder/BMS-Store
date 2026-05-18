@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router"
 
 function HeroSlide({ slide }) {
   return (
@@ -30,12 +31,15 @@ function HeroSlide({ slide }) {
           {slide.subtitle}
         </p>
 
-        <a
-          href={slide.ctaLink}
-          className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-black text-white font-medium hover:opacity-90 transition"
+        <Link
+          to={slide.ctaLink}
+          style={{
+            color: slide.titleColor,
+            textDecoration: "underline",
+          }}
         >
           {slide.ctaText}
-        </a>
+        </Link>
 
       </div>
 
