@@ -20,18 +20,75 @@ export const ProductApi = createApi({
                 transformResponse: (response) => normalizeProduct(response),
             }),
             getSearchProducts: builder.query({
-                query: ({ query, limit = 20, skip = 0 } = {}) => 
-                    `/products/search?q=${query}&limit=${limit}&skip=${skip}`,
-                transformResponse: (response) => ({
-                    products: response.products.map(normalizeProduct),
-                    total: response.total,
-                }),
-            }),
+  async queryFn(
+    { query, categories = [], limit = 20, skip = 0 },
+    _api,
+    _extraOptions,
+    fetchWithBQ
+  ) {
+
+    const searchRes = await fetchWithBQ(
+      `/products/search?q=${query}&limit=${limit}&skip=${skip}`
+    );
+
+    if (searchRes.error)
+      return { error: searchRes.error };
+
+    let products =
+      searchRes.data.products.map(normalizeProduct);
+
+    const matchedCategory =
+      categories.find(cat =>
+        cat.slug
+          ?.toLowerCase()
+          .includes(query.toLowerCase())
+      );
+
+    if (matchedCategory) {
+
+      const categoryRes =
+        await fetchWithBQ(
+          `/products/category/${matchedCategory.slug}?limit=${limit}&skip=${skip}`
+        );
+
+      if (categoryRes.data) {
+        products = [
+          ...products,
+          ...categoryRes.data.products.map(
+            normalizeProduct
+          )
+        ];
+      }
+    }
+
+    const uniqueProducts =
+      [...new Map(
+        products.map(
+          p => [p.id,p]
+        )
+      ).values()];
+
+    return {
+      data:{
+        products:uniqueProducts,
+
+        total:
+          Math.max(
+            searchRes.data.total,
+            matchedCategory
+            ? uniqueProducts.length
+            : searchRes.data.total
+          )
+      }
+    };
+
+  }
+}),
             getCategories: builder.query({
                 query: () => `/products/categories`,
             }),
             getProductsByCategory: builder.query({
-                query: ({ category, limit = 20, skip = 0 }) =>
+                query: ({ category, limit = 10, skip = 0 }) =>
                     `/products/category/${category}?limit=${limit}&skip=${skip}`,
 
                 transformResponse: (res) => ({

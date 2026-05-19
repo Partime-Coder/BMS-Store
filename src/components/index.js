@@ -19,7 +19,7 @@ import Logo from "./utility/Logo";
 import BrandLogo from "./utility/BrandLogo";
 import ScrollToTop from "./utility/ScrollToTop";
 import Loader from "./utility/Loader";
-
+import Pagination from "./utility/Pagination";
 
 import LoginForm from "./form/LoginForm";
 import SignupForm from "./form/SignupForm";
@@ -39,6 +39,7 @@ import GridItem from "./layout/uiLayout/GridItem";
 import ProductDetail from "./pageUI/productDetailPageUI/ProductDetail";
 import ProductAction from "./pageUI/productDetailPageUI/ProductAction";
 import ProductReview from "./pageUI/productDetailPageUI/ProductReview";
+
 
 
 
@@ -75,5 +76,6 @@ export {
     ProductAction,
     ProductReview,
     SimillerProductSliderCard,
-    ProductVerticalCard
+    ProductVerticalCard,
+    Pagination
 }
