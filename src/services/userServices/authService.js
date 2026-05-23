@@ -70,7 +70,7 @@ const registerUser = (userData) => {
     return newUser;
 };
 
-const loginUser = ({  email, password: inputPassword  }) => {
+const loginUser = ({ email, password: inputPassword }) => {
 
     if (!email || !email.trim()) {
         throw new Error("Email required");

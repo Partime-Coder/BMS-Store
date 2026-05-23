@@ -4,83 +4,117 @@ function Pagination({
   currentPage,
   total,
   perPage = 10,
-  onPageChange,
+  onPageChange
 }) {
   const totalPages =
     Math.ceil(total / perPage);
 
-  if (totalPages <= 1) return null;
+  if (totalPages <= 1)
+    return null;
+
+  const pages = [];
+
+  for (
+    let i = 1;
+    i <= totalPages;
+    i++
+  ) {
+
+    if (
+      i === 1 ||
+      i === totalPages ||
+      (i >= currentPage - 1 &&
+       i <= currentPage + 1)
+    ) {
+      pages.push(i);
+    }
+
+    else if (
+      pages[
+        pages.length - 1
+      ] !== "..."
+    ) {
+      pages.push("...");
+    }
+  }
 
   return (
-    <div className="flex items-center justify-center gap-2 mt-8 flex-wrap">
+
+    <div className="
+      flex
+      items-center
+      justify-center
+      gap-4
+      mt-8
+      text-sm
+    ">
 
       <button
+        disabled={currentPage===1}
         onClick={() =>
-          onPageChange(currentPage - 1)
+          onPageChange(
+            currentPage-1
+          )
         }
-        disabled={currentPage === 1}
         className="
-          px-4 py-2
-          border rounded-lg
-          disabled:opacity-50
-          disabled:cursor-not-allowed
-          hover:bg-gray-100
-          transition
+        disabled:opacity-40
         "
       >
         Prev
       </button>
 
-      {
-        Array.from(
-          { length: totalPages },
-          (_, i) => i + 1
-        ).map(page => (
+      {pages.map(
+        (page,index)=>
 
+        page==="..." ?
+
+        (
+          <span key={index}>
+            ...
+          </span>
+        )
+
+        :
+
+        (
           <button
             key={page}
             onClick={() =>
               onPageChange(page)
             }
-            className={`
-              px-4 py-2
-              rounded-lg
-              border
-              transition
-
-              ${
-                currentPage === page
-                  ? "bg-black text-white"
-                  : "hover:bg-gray-100"
-              }
-            `}
+            className={
+             currentPage===page
+             ?
+             "font-bold underline"
+             :
+             ""
+            }
           >
             {page}
           </button>
+        )
 
-        ))
-      }
+      )}
 
       <button
-        onClick={() =>
-          onPageChange(currentPage + 1)
-        }
         disabled={
-          currentPage === totalPages
+          currentPage===
+          totalPages
+        }
+        onClick={() =>
+          onPageChange(
+            currentPage+1
+          )
         }
         className="
-          px-4 py-2
-          border rounded-lg
-          disabled:opacity-50
-          disabled:cursor-not-allowed
-          hover:bg-gray-100
-          transition
+        disabled:opacity-40
         "
       >
         Next
       </button>
 
     </div>
+
   );
 }
 

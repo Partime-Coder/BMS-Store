@@ -37,3 +37,12 @@ export const getWishlist = () => {
 export const saveWishlist = (wishlist) => {
     localStorage.setItem("wishlist", JSON.stringify(wishlist));
 };
+
+export const getAddress = () => {
+  const address = localStorage.getItem("address");
+  return address ? JSON.parse(address): null;
+};
+
+export const saveAddress = (address) => {
+  localStorage.setItem("address", JSON.stringify(address));
+};
