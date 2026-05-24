@@ -1,236 +1,144 @@
 import { getCart, getSession, saveCart } from "../utilityServices/localStorageService";
 
-
-const now = () => {
-    const date = new Date();
-    return {
-        date: date.toLocaleDateString(),
-        time: date.toLocaleTimeString()
-    };
-};
-
 const getUserCart = () => {
     const session = getSession();
-    if (!session) throw new Error("User is not logged in");
+    if (!session) throw new Error("User not logged in!");
 
-    const allCarts = getCart();
-    const userCart = allCarts.find(
-        cart => cart.userId === session.id && cart.status === "active"
-    );
+    const cartData = getCart() || [];
+    const userCart = cartData.find(cart => cart.userId === session.id);
 
-    return userCart || null;
+    return { userCart, cartData, userId: session.id };
 };
 
-const addToCart = (product) => {
-    const session = getSession();
-    if (!session) throw new Error("User is not logged in");
-    if (!product?.id) throw new Error("Product is required");
-
-    const allCarts = getCart();
-    const existingCartIndex = allCarts.findIndex(
-        cart => cart.userId === session.id && cart.status === "active"
-    );
-
-    if (existingCartIndex === -1) {
-        const newCart = {
-            userId: session.id,
-            status: "active",
-            items: [
-                {
-                    productId: product.id,
-                    priceSnapshot: product.discountedPrice ?? product.price,
-                    productSnapshot: {
-                        title: product.title,
-                        thumbnail: product.thumbnail,
-                        brand: product.brand,
-                        category: product.category,
-                    },
-                    quantity: 1,
-                    stockAtTimeOfAdding: product.stock,
-                    addedAt: now(),
-                }
-            ],
-            updatedAt: now(),
-        };
-
-        allCarts.push(newCart);
-        saveCart(allCarts);
-        return newCart;
+const addToCart = (product, quantity = 1) => {
+    if (!product || !product.id) {
+        throw new Error("Product is required!");
     }
 
-    const userCart = allCarts[existingCartIndex];
-    const existingItemIndex = userCart.items.findIndex(
-        item => item.productId === product.id
+    const session = getSession();
+    if (!session) throw new Error("User not logged in!");
+    const userId = session.id;
+
+    const cartData = getCart() || [];
+    let userCart = cartData.find(cart => cart.userId === userId);
+
+    const now = new Date().toISOString();
+
+    if (!userCart) {
+        userCart = {
+            userId,
+            status: "active",
+            products: [],
+            createdAt: now,
+            updatedAt: now,
+        };
+        cartData.push(userCart);
+    }
+
+    const existingProduct = userCart.products.find(
+        p => p.productId === product.id
     );
 
-    if (existingItemIndex !== -1) {
-        const existingItem = userCart.items[existingItemIndex];
-        if (existingItem.quantity >= product.stock) {
-            throw new Error("Cannot add more than available stock");
-        }
-        userCart.items[existingItemIndex].quantity += 1;
+    if (existingProduct) {
+        existingProduct.quantity += quantity;
+        existingProduct.updatedAt = now;
     } else {
-        userCart.items.push({
+        userCart.products.push({
             productId: product.id,
-            priceSnapshot: product.discountedPrice ?? product.price,
-            productSnapshot: {
-                title: product.title,
-                thumbnail: product.thumbnail,
-                brand: product.brand,
-                category: product.category,
-            },
-            quantity: 1,
-            stockAtTimeOfAdding: product.stock,
-            addedAt: now(),
+            name: product.name,
+            price: product.price,       
+            image: product.image,
+            quantity,
+            createdAt: now,
+            updatedAt: now,
         });
     }
 
-    userCart.updatedAt = now();
-    allCarts[existingCartIndex] = userCart;
-    saveCart(allCarts);
-
+    userCart.updatedAt = now;
+    saveCart(cartData);
     return userCart;
 };
 
+const getMyCart = () => {
+    const { userCart } = getUserCart();
+    return userCart || null;   
+};
+
+// ─── Remove product from cart ────────────────────────────────────
 const removeFromCart = (productId) => {
-    const session = getSession();
-    if (!session) throw new Error("User is not logged in");
-    if (!productId) throw new Error("Product ID is required");
+    if (!productId) throw new Error("Product Id is required!");
 
-    const allCarts = getCart();
-    const cartIndex = allCarts.findIndex(
-        cart => cart.userId === session.id && cart.status === "active"
+    const { userCart, cartData } = getUserCart();
+    if (!userCart) throw new Error("Cart not found!");
+
+    userCart.products = userCart.products.filter(
+        p => p.productId !== productId
     );
 
-    if (cartIndex === -1) throw new Error("Cart not found");
-
-    allCarts[cartIndex].items = allCarts[cartIndex].items.filter(
-        item => item.productId !== productId
-    );
-    allCarts[cartIndex].updatedAt = now();
-
-    saveCart(allCarts);
-    return allCarts[cartIndex];
+    userCart.updatedAt = new Date().toISOString();
+    saveCart(cartData);
+    return userCart;
 };
 
-const increaseQuantity = (productId, stock) => {
-    const session = getSession();
-    if (!session) throw new Error("User is not logged in");
-    if (!productId) throw new Error("Product ID is required");
 
-    const allCarts = getCart();
-    const cartIndex = allCarts.findIndex(
-        cart => cart.userId === session.id && cart.status === "active"
-    );
+const updateQuantity = (productId, quantity) => {
+    if (!productId) throw new Error("Product Id is required!");
+    if (quantity < 1) throw new Error("Quantity must be at least 1!");
 
-    if (cartIndex === -1) throw new Error("Cart not found");
+    const { userCart, cartData } = getUserCart();
+    if (!userCart) throw new Error("Cart not found!");
 
-    const itemIndex = allCarts[cartIndex].items.findIndex(
-        item => item.productId === productId
-    );
+    const product = userCart.products.find(p => p.productId === productId);
+    if (!product) throw new Error("Product not in cart!");
 
-    if (itemIndex === -1) throw new Error("Item not found in cart");
+    product.quantity = quantity;
+    product.updatedAt = new Date().toISOString();
 
-    const item = allCarts[cartIndex].items[itemIndex];
-    if (item.quantity >= stock) throw new Error("Cannot exceed available stock");
-
-    allCarts[cartIndex].items[itemIndex].quantity += 1;
-    allCarts[cartIndex].updatedAt = now();
-
-    saveCart(allCarts);
-    return allCarts[cartIndex];
+    userCart.updatedAt = new Date().toISOString();
+    saveCart(cartData);
+    return userCart;
 };
 
-const decreaseQuantity = (productId) => {
-    const session = getSession();
-    if (!session) throw new Error("User is not logged in");
-    if (!productId) throw new Error("Product ID is required");
-
-    const allCarts = getCart();
-    const cartIndex = allCarts.findIndex(
-        cart => cart.userId === session.id && cart.status === "active"
-    );
-
-    if (cartIndex === -1) throw new Error("Cart not found");
-
-    const itemIndex = allCarts[cartIndex].items.findIndex(
-        item => item.productId === productId
-    );
-
-    if (itemIndex === -1) throw new Error("Item not found in cart");
-
-    const item = allCarts[cartIndex].items[itemIndex];
-
-    if (item.quantity === 1) {
-        allCarts[cartIndex].items = allCarts[cartIndex].items.filter(
-            item => item.productId !== productId
-        );
-    } else {
-        allCarts[cartIndex].items[itemIndex].quantity -= 1;
-    }
-
-    allCarts[cartIndex].updatedAt = now();
-    saveCart(allCarts);
-    return allCarts[cartIndex];
-};
 
 const clearCart = () => {
-    const session = getSession();
-    if (!session) throw new Error("User is not logged in");
+    const { userCart, cartData } = getUserCart();
+    if (!userCart) throw new Error("Cart not found!");
 
-    const allCarts = getCart();
-    const cartIndex = allCarts.findIndex(
-        cart => cart.userId === session.id && cart.status === "active"
-    );
+    userCart.products = [];
+    userCart.status = "ordered";
+    userCart.updatedAt = new Date().toISOString();
 
-    if (cartIndex === -1) throw new Error("Cart not found");
-
-    // archive old cart
-    allCarts[cartIndex].status = "ordered";
-    allCarts[cartIndex].updatedAt = now();
-
-    // fresh active cart
-    allCarts.push({
-        userId: session.id,
-        status: "active",
-        items: [],
-        updatedAt: now(),
-    });
-
-    saveCart(allCarts);
+    saveCart(cartData);
+    return userCart;
 };
 
+
 const getCartSummary = () => {
-    const cart = getUserCart();
-    if (!cart || cart.items.length === 0) {
-        return { totalItems: 0, totalQuantity: 0, totalPrice: 0 };
+    const { userCart } = getUserCart();
+    if (!userCart || userCart.products.length === 0) {
+        return { totalItems: 0, totalPrice: 0, products: [] };
     }
 
-    const totalQuantity = cart.items.reduce((sum, item) => sum + item.quantity, 0);
-    const totalPrice = cart.items.reduce(
-        (sum, item) => sum + item.priceSnapshot * item.quantity, 0
+    const totalItems = userCart.products.reduce(
+        (sum, p) => sum + p.quantity, 0
+    );
+    const totalPrice = userCart.products.reduce(
+        (sum, p) => sum + p.price * p.quantity, 0
     );
 
     return {
-        totalItems: cart.items.length,
-        totalQuantity,
-        totalPrice: +totalPrice.toFixed(2),
+        totalItems,
+        totalPrice: parseFloat(totalPrice.toFixed(2)),
+        products: userCart.products,
     };
 };
 
-const isInCart = (productId) => {
-    const cart = getUserCart();
-    if (!cart) return false;
-    return cart.items.some(item => item.productId === productId);
-};
-
 export {
-    getUserCart,
     addToCart,
+    getMyCart,
     removeFromCart,
-    increaseQuantity,
-    decreaseQuantity,
+    updateQuantity,
     clearCart,
     getCartSummary,
-    isInCart,
 };
+
