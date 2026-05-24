@@ -1,6 +1,11 @@
 import React from 'react'
+import { addToCart } from '../../services/cartServices/cartService';
+import { CartButton } from '../index.js'
+import { useNavigate } from 'react-router';
+
 
 function ProductCard({ product }) {
+    const navigate = useNavigate();
     if (!product) return null;
 
     const {
@@ -20,6 +25,7 @@ function ProductCard({ product }) {
 
     return (
         <div
+            onClick={() => navigate(`/product/${product.id}`)}
             className="
     flex gap-3 sm:gap-4
     bg-white border border-gray-200 rounded-lg
@@ -96,20 +102,7 @@ function ProductCard({ product }) {
                 </p>
 
                 {/* Button */}
-                <button
-                    className="
-        mt-2
-        w-full sm:w-fit
-        bg-[#FFD814] hover:bg-[#F7CA00]
-        text-[#0F1111]
-        text-xs sm:text-sm
-        py-1.5 px-4 sm:px-6
-        rounded-full border border-[#FCD200]
-      "
-                    onClick={(e) => e.stopPropagation()}
-                >
-                    Add to cart
-                </button>
+                <CartButton product={product} />
             </div>
         </div>
     );

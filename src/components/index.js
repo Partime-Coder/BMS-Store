@@ -4,8 +4,8 @@ import Header from "./header/Header";
 import Navbar from "./header/Navbar";
 import SecondaryNav from "./header/SecondaryNav";
 import SearchInput from "./header/SearchInput";
-import CartButton from "./header/CartButton";
 import ProfileButton from "./header/ProfileButton";
+import CartBadge from "./header/CartBadge";
 
 import Footer from "./footer/Footer";
 import FooterMain from "./footer/FooterMain";
@@ -20,9 +20,13 @@ import BrandLogo from "./utility/BrandLogo";
 import ScrollToTop from "./utility/ScrollToTop";
 import Loader from "./utility/Loader";
 import Pagination from "./utility/Pagination";
+import WishlistButton from "./utility/WishlistButton";
+import CartButton from "./utility/CartButton";
+
 
 import LoginForm from "./form/LoginForm";
 import SignupForm from "./form/SignupForm";
+import AddressForm from "./form/AddressForm";
 
 import ProductCard from "./cardUI/ProductCard";
 import ProductGridCard from "./cardUI/ProductGridCard";
@@ -44,6 +48,9 @@ import ProductReview from "./pageUI/productDetailPageUI/ProductReview";
 
 
 
+
+
+
 export {
     Container,
     Footer,
@@ -53,7 +60,6 @@ export {
     Logo,
     Input,
     Button,
-    CartButton,
     SecondaryNav,
     ScrollToTop,
     BrandLogo,
@@ -77,5 +83,9 @@ export {
     ProductReview,
     SimillerProductSliderCard,
     ProductVerticalCard,
-    Pagination
+    Pagination,
+    CartBadge,
+    WishlistButton,
+    CartButton,  
+    AddressForm
 }

@@ -2,7 +2,7 @@ import { getCart, getSession, saveCart } from "../utilityServices/localStorageSe
 
 const getUserCart = () => {
     const session = getSession();
-    if (!session) throw new Error("User not logged in!");
+    if (!session) throw new Error ("User not logged in!");
 
     const cartData = getCart() || [];
     const userCart = cartData.find(cart => cart.userId === session.id);
@@ -64,7 +64,7 @@ const getMyCart = () => {
     return userCart || null;   
 };
 
-// ─── Remove product from cart ────────────────────────────────────
+
 const removeFromCart = (productId) => {
     if (!productId) throw new Error("Product Id is required!");
 

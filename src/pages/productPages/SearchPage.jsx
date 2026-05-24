@@ -35,15 +35,15 @@ function SearchPage() {
   if (!query)
     return (
       <div className="flex flex-1 items-center justify-center min-h-screen">
-           Search Something ...
-         </div>
+        Search Something ...
+      </div>
     );
 
   if (isLoading)
-   return (
-         <div className="flex flex-1 items-center justify-center min-h-screen">
-           <Loader />
-         </div>
+    return (
+      <div className="flex flex-1 items-center justify-center min-h-screen">
+        <Loader />
+      </div>
     );
 
   if (error)
@@ -60,7 +60,7 @@ function SearchPage() {
         Results for "{query}"
       </h1>
 
-      {data?.products.length===0 ? (
+      {data?.products.length === 0 ? (
 
         <p>No results found</p>
 
@@ -69,15 +69,10 @@ function SearchPage() {
         <>
           {data.products.map(product => (
 
-            <Link
+            <ProductCard
               key={product.id}
-              to={`/product/${product.id}`}
-            >
-              <ProductCard
-                product={product}
-              />
-            </Link>
-
+              product={product}
+            />
           ))}
 
           <Pagination
