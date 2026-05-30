@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { CartButton } from '../../index.js'
 
 function ProductAction({ product }) {
   const [qty, setQty] = useState(1)
@@ -19,20 +20,14 @@ function ProductAction({ product }) {
           className="w-7 h-7 rounded border border-gray-200 bg-gray-100 text-lg leading-none cursor-pointer"
         >+</button>
       </div>
-
-      {/* Add to Cart — connect to cart slice later */}
-      <button
-        disabled={!product.inStock}
-        className="w-full py-2.5 rounded-lg bg-yellow-400 hover:bg-yellow-500 disabled:opacity-50 disabled:cursor-not-allowed text-sm font-semibold text-gray-900 transition-colors"
-      >
-        {product.inStock ? 'Add to Cart' : 'Out of Stock'}
-      </button>
-
-      {/* Wishlist — connect to wishlist slice later */}
-      <button className="w-full py-2.5 rounded-lg border border-gray-200 bg-gray-50 hover:bg-gray-100 text-sm font-medium text-gray-700 transition-colors">
-        Add to Wishlist
-      </button>
-
+      <div className=" w-full flex flex-col md:flex-row gap-2.5 ">
+        {/* Add to Cart — connect to cart slice later */}
+        <CartButton product={product} quantity={qty} />
+        {/* Wishlist — connect to wishlist slice later */}
+        <button className="w-full py-2.5 rounded-full border border-gray-200 bg-gray-50 hover:bg-gray-100 text-sm font-medium text-gray-700 transition-colors">
+          Add to Wishlist
+        </button>
+      </div>
     </div>
   )
 }

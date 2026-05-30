@@ -1,7 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { CartButton } from '../index.js'
+import { useNavigate } from 'react-router';
 
 function ProductVerticalCard({ product }) {
+
+    const navigate = useNavigate();
+
+
     if (!product) return null;
 
     const {
@@ -15,8 +20,8 @@ function ProductVerticalCard({ product }) {
     } = product;
 
     return (
-        <Link
-            to={`/product/${id}`}
+        <div
+            onClick={() => navigate(`/product/${product.id}`)}
             className="
             bg-white border border-gray-200 
             p-3
@@ -61,28 +66,11 @@ function ProductVerticalCard({ product }) {
                 </div>
 
                 <div className="mt-auto pt-4">
-                    <button
-                        onClick={(e) => {
-                            e.preventDefault(); // stop Link navigation
-                            e.stopPropagation();
-
-                            console.log("add to cart");
-                        }}
-                        className="
-                        w-full
-                        bg-[#FFD814]
-                        hover:bg-[#F7CA00]
-                        border border-[#FCD200]
-                        rounded-full
-                        py-2 text-sm
-                        "
-                    >
-                        Add to cart
-                    </button>
+                   <CartButton product={product} />
                 </div>
 
             </div>
-        </Link>
+        </div>
     );
 }
 

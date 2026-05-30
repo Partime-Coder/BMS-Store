@@ -10,6 +10,7 @@ import WomensFashionPage from "./storePages/WomensFashionPage";
 
 import SearchPage from "./productPages/SearchPage";
 import ProductDetailPage from "./productPages/ProductDetailPage";
+import CartPage from "./productPages/CartPage";
 
 import Login from "./authPages/Login";
 import SignUp from "./authPages/SignUp";
@@ -26,6 +27,8 @@ export{
     SportsPage,
     SearchPage,
     ProductDetailPage,
+    CartPage,
     Login,
     SignUp,
+
 }

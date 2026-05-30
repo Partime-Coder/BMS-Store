@@ -1,5 +1,4 @@
 import React from 'react'
-import { addToCart } from '../../services/cartServices/cartService';
 import { CartButton } from '../index.js'
 import { useNavigate } from 'react-router';
 
@@ -101,8 +100,14 @@ function ProductCard({ product }) {
                     {inStock ? 'In Stock' : 'Out of Stock'}
                 </p>
 
-                {/* Button */}
-                <CartButton product={product} />
+                <div className=" w-full md:w-1/2 flex flex-col md:flex-row gap-2.5 ">
+                       {/* Add to Cart — connect to cart slice later */}
+                       <CartButton product={product} />
+                       {/* Wishlist — connect to wishlist slice later */}
+                       <button className="w-full py-2.5 rounded-full border border-gray-200 bg-gray-50 hover:bg-gray-100 text-sm font-medium text-gray-700 transition-colors">
+                         Add to Wishlist
+                       </button>
+                     </div>
             </div>
         </div>
     );

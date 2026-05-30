@@ -2,7 +2,7 @@ import { getCart, getSession, saveCart } from "../utilityServices/localStorageSe
 
 const getUserCart = () => {
     const session = getSession();
-    if (!session) throw new Error ("User not logged in!");
+    if (!session) throw new Error("User not logged in!");
 
     const cartData = getCart() || [];
     const userCart = cartData.find(cart => cart.userId === session.id);
@@ -45,10 +45,18 @@ const addToCart = (product, quantity = 1) => {
     } else {
         userCart.products.push({
             productId: product.id,
-            name: product.name,
-            price: product.price,       
-            image: product.image,
+            name: product.title,
+            price: product.price,
+            discountedPrice: product.discountedPrice,
+            discountPercentage: product.discountPercentage,
+            image: product.thumbnail,
+            brand: product.brand,
+            category: product.category,
+            stock: product.stock,
+            inStock: product.inStock,
+            minimumOrderQuantity: product.minimumOrderQuantity,
             quantity,
+            isSelected: true,
             createdAt: now,
             updatedAt: now,
         });
@@ -61,7 +69,9 @@ const addToCart = (product, quantity = 1) => {
 
 const getMyCart = () => {
     const { userCart } = getUserCart();
-    return userCart || null;   
+    console.log("cartdata", userCart);
+    
+    return userCart || null;
 };
 
 
@@ -100,45 +110,45 @@ const updateQuantity = (productId, quantity) => {
 };
 
 
-const clearCart = () => {
-    const { userCart, cartData } = getUserCart();
-    if (!userCart) throw new Error("Cart not found!");
+// const clearCart = () => {
+//     const { userCart, cartData } = getUserCart();
+//     if (!userCart) throw new Error("Cart not found!");
 
-    userCart.products = [];
-    userCart.status = "ordered";
-    userCart.updatedAt = new Date().toISOString();
+//     userCart.products = [];
+//     userCart.status = "ordered";
+//     userCart.updatedAt = new Date().toISOString();
 
-    saveCart(cartData);
-    return userCart;
-};
+//     saveCart(cartData);
+//     return userCart;
+// };
 
 
-const getCartSummary = () => {
-    const { userCart } = getUserCart();
-    if (!userCart || userCart.products.length === 0) {
-        return { totalItems: 0, totalPrice: 0, products: [] };
-    }
+// const getCartSummary = () => {
+//     const { userCart } = getUserCart();
+//     if (!userCart || userCart.products.length === 0) {
+//         return { totalItems: 0, totalPrice: 0, products: [] };
+//     }
 
-    const totalItems = userCart.products.reduce(
-        (sum, p) => sum + p.quantity, 0
-    );
-    const totalPrice = userCart.products.reduce(
-        (sum, p) => sum + p.price * p.quantity, 0
-    );
+//     const totalItems = userCart.products.reduce(
+//         (sum, p) => sum + p.quantity, 0
+//     );
+//     const totalPrice = userCart.products.reduce(
+//         (sum, p) => sum + p.price * p.quantity, 0
+//     );
 
-    return {
-        totalItems,
-        totalPrice: parseFloat(totalPrice.toFixed(2)),
-        products: userCart.products,
-    };
-};
+//     return {
+//         totalItems,
+//         totalPrice: parseFloat(totalPrice.toFixed(2)),
+//         products: userCart.products,
+//     };
+// };
 
 export {
     addToCart,
     getMyCart,
     removeFromCart,
     updateQuantity,
-    clearCart,
-    getCartSummary,
+    // clearCart,
+    // getCartSummary,
 };
 

@@ -20,7 +20,7 @@ export const normalizeProduct = (raw) => ({
   warrantyInformation: raw.warrantyInformation ?? null,
   shippingInformation: raw.shippingInformation ?? null,
   returnPolicy: raw.returnPolicy ?? null,
-  minimumOrderQuantity: raw.minimumOrderQuantity ?? 1,
+  minimumOrderQuantity: 1,
   tags: raw.tags ?? [],
   reviews: raw.reviews ?? [],
   weight: raw.weight ?? null,

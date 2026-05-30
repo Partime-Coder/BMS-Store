@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Input, Button } from '../index.js'
 import { useDispatch } from 'react-redux'
-import { Link, useNavigate } from 'react-router'
+import { Link, useLocation, useNavigate } from 'react-router'
 import { useForm } from 'react-hook-form'
 import { login } from '../../features/user/authSlice.js'
 import { loginUser } from '../../services/userServices/authService.js'
@@ -10,15 +10,18 @@ import { loginUser } from '../../services/userServices/authService.js'
 function LoginForm() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const location = useLocation();
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [apiError, setApiError] = useState("");
+    const message = location.state?.message || "";
+    const redirectTo = location.state?.redirectTo || '/';
 
     const handleLogin = async (data) => {
         try {
             setApiError("");
             const user = await loginUser(data);
             dispatch(login(user));
-            navigate('/');
+            navigate(redirectTo);
         } catch (error) {
             setApiError(error.message);
         }
@@ -31,6 +34,11 @@ function LoginForm() {
                 {apiError && (
                     <p className="text-red-500 text-sm text-center">
                         {apiError}
+                    </p>
+                )}
+                {message && (
+                    <p className="text-red-500 text-sm text-center">
+                        {message}
                     </p>
                 )}
                 <div className="space-y-4">

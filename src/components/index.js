@@ -44,11 +44,10 @@ import ProductDetail from "./pageUI/productDetailPageUI/ProductDetail";
 import ProductAction from "./pageUI/productDetailPageUI/ProductAction";
 import ProductReview from "./pageUI/productDetailPageUI/ProductReview";
 
-
-
-
-
-
+import CartItemUI from "./pageUI/cartPageUI/CartItemUI";
+import CartItemsLayout from "./pageUI/cartPageUI/CartItemsLayout";
+import CartSummery from "./pageUI/cartPageUI/CartSummery";
+import CartItemAction from "./pageUI/cartPageUI/CartItemAction";
 
 
 export {
@@ -87,5 +86,9 @@ export {
     CartBadge,
     WishlistButton,
     CartButton,  
-    AddressForm
+    AddressForm,
+    CartItemUI,
+    CartItemsLayout,
+    CartSummery,
+    CartItemAction,
 }

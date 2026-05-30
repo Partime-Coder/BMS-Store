@@ -72,6 +72,7 @@ function SearchPage() {
             <ProductCard
               key={product.id}
               product={product}
+              
             />
           ))}
 

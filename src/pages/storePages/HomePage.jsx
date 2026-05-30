@@ -10,7 +10,7 @@ import { heroSliderConfig } from '../../config/heroSlidersData';
 function HomePage() {
 
   const { sections, isLoading, isError, error } = useHomepageData();
-  console.log("homepage test data", { sections, isLoading, isError, error });
+  
 
 
   return (

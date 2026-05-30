@@ -5,7 +5,7 @@ import { heroSliderConfig } from '../../config/heroSlidersData';
 
 function ElectronicsPage() {
   const { sections, products, isLoading, isError, error } = useCategorypageData("electronics")
-  console.log('products', products);
+
 
   return (
     <>

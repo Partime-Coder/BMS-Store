@@ -5,8 +5,6 @@ function ProductBannerCard({ id, sections, isLoading }) {
 
   const section = sections.find(s => s.id === id)
   const banner = section?.data || {}
-  console.log(banner)
-console.log(banner?.titleColor)
 
   return (
     <div
