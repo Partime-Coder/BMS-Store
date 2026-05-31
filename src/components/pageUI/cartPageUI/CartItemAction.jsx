@@ -34,14 +34,13 @@ function CartItemAction({ productId, quantity, stock, minimumOrderQuantity }) {
     };
 
     return (
-        <div className="flex flex-wrap items-center gap-3 mt-3">
+        <div className="flex flex-col sm:flex-row gap-2.5 mt-3">
 
-            {/* Quantity */}
-            <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-gray-50">
+            
+            <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-gray-50 w-fit">
                 <button
                     className="w-9 h-9 hover:bg-gray-200 transition-colors"
                     onClick={handleDecrease}
-                //   disabled={localQuantity <= minimumOrderQuantity}
                 >−</button>
 
                 <span className="w-10 text-center text-sm font-medium">
@@ -55,18 +54,19 @@ function CartItemAction({ productId, quantity, stock, minimumOrderQuantity }) {
                 >+</button>
             </div>
 
-            {/* Save for later */}
-            <button className="text-xs sm:text-sm text-[#007185] hover:underline">
-                Save for later
-            </button>
-
-            {/* Remove */}
-            <button
-                className="text-xs sm:text-sm text-red-600 hover:underline"
-                onClick={handleRemove}
-            >
-                Remove
-            </button>
+            
+            <div className="flex items-center gap-3">
+                <button className="text-xs sm:text-sm text-[#007185] hover:underline">
+                    Save for later
+                </button>
+                <span className="text-gray-300 text-sm">|</span>
+                <button
+                    className="text-xs sm:text-sm text-red-600 hover:underline"
+                    onClick={handleRemove}
+                >
+                    Remove
+                </button>
+            </div>
 
         </div>
     )

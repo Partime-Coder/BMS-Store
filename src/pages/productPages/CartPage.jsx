@@ -1,6 +1,6 @@
 import React from 'react'
 import { getMyCart } from '../../services/cartServices/cartService'
-import { CartItemsLayout, Loader } from '../../components'
+import { CartItemsLayout, CartSummery, Loader , Container, CartZeroItemsUI} from '../../components'
 import { BsCartX } from '../../assets/icons/icons.js'
 import { useSelector } from 'react-redux'
 
@@ -23,10 +23,25 @@ function CartPage() {
   }
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-6">
-      <h1 className="text-xl font-medium text-gray-900 mb-4">Shopping Cart</h1>
-      <CartItemsLayout products={cart.products} />
-    </div>
+     <Container>
+      <div className="">
+
+
+        <div className="flex flex-col lg:flex-row gap-6">
+
+          {/* LEFT */}
+          <div className="flex-1 min-w-0">
+            <CartItemsLayout products={cart.products} />
+          </div>
+
+          {/* RIGHT — sticky so it stays visible while scrolling items */}
+          <div className="w-full lg:w-[320px] shrink-0 self-start lg:sticky lg:top-6">
+            <CartSummery />
+          </div>
+
+        </div>
+      </div>
+    </Container>
   )
 }
 

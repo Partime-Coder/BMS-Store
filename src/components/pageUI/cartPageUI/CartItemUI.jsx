@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 // import { removeFromCart, updateQuantity } from '../../../services/cartServices/cartService';
-import { CartItemAction } from '../../index.js'
+import { CartItemAction, CartItemToggle } from '../../index.js'
 
-function CartItemUI({ item, onToggleSelect }) {
+function CartItemUI({ item }) {
 
   const {
     productId,
@@ -25,25 +25,18 @@ function CartItemUI({ item, onToggleSelect }) {
     <div
       className="
       flex gap-3 sm:gap-4
-      bg-white border border-gray-200 rounded-lg
+      bg-white border-t border-b  border-gray-200 
       p-3 sm:p-4
-      hover:shadow-md transition-shadow
     "
     >
 
       {/* Checkbox */}
       <div className="flex items-center shrink-0">
-        <input
-          type="checkbox"
-          checked={isSelected}
-          onChange={() => onToggleSelect(productId)}
-          className="w-4 h-4 cursor-pointer accent-[#FFD814]"
-          aria-label="Select item"
-        />
+        <CartItemToggle productId={productId} />
       </div>
 
       {/* Image */}
-      <div className="shrink-0 w-28 h-28 sm:w-44 sm:h-44 flex items-center justify-center bg-gray-50 rounded">
+      <div className="shrink-0 w-28 h-28 sm:w-44 sm:h-44 flex items-center justify-center bg-white rounded">
         <img
           src={image}
           alt={name}

@@ -70,7 +70,7 @@ const addToCart = (product, quantity = 1) => {
 const getMyCart = () => {
     const { userCart } = getUserCart();
     console.log("cartdata", userCart);
-    
+
     return userCart || null;
 };
 
@@ -109,6 +109,62 @@ const updateQuantity = (productId, quantity) => {
     return userCart;
 };
 
+const toggleProductSelection = (productId) => {
+    if (!productId) throw new Error("Product Id is required!");
+
+    const { userCart, cartData } = getUserCart();
+    if (!userCart) throw new Error("Cart not found!");
+    const product = userCart.products.find(p => p.productId === productId);
+    if (!product) throw new Error("Product not in cart!");
+    product.isSelected = !product.isSelected;
+    product.updatedAt = new Date().toISOString();
+    userCart.updatedAt = new Date().toISOString();
+    saveCart(cartData);
+    return userCart;
+};
+
+const getCartSummary = () => {
+    const { userCart } = getUserCart();
+    if (!userCart || userCart.products.length === 0) {
+        return { totalItems: 0, selectedItems: 0, subtotal: 0, totalDiscount: 0, unselectedCount: 0 };
+    }
+
+    const selected = userCart.products.filter(p => p.isSelected);
+    const unselectedCount = userCart.products.length - selected.length;
+
+    const subtotal = selected.reduce(
+        (sum, p) => sum + p.discountedPrice * p.quantity, 0
+    );
+    const originalTotal = selected.reduce(
+        (sum, p) => sum + p.price * p.quantity, 0
+    );
+    const totalDiscount = originalTotal - subtotal;
+
+    return {
+        totalItems: userCart.products.length,
+        selectedItems: selected.length,
+        subtotal: parseFloat(subtotal.toFixed(2)),
+        originalTotal: parseFloat(originalTotal.toFixed(2)),
+        totalDiscount: parseFloat(totalDiscount.toFixed(2)),
+        unselectedCount,
+    };
+};
+
+const getCartSubTotal = () => {
+    const { userCart } = getUserCart();
+    if (!userCart || userCart.products.length === 0) {
+        return { subtotal: 0 };
+    }
+
+    const subtotal = userCart.products.reduce(
+        (sum, p) => sum + p.discountedPrice * p.quantity, 0
+    );
+    return {
+        subtotal: parseFloat(subtotal.toFixed(2)),
+        totalItems: userCart.products.length,
+    };
+};
+
 
 // const clearCart = () => {
 //     const { userCart, cartData } = getUserCart();
@@ -123,32 +179,15 @@ const updateQuantity = (productId, quantity) => {
 // };
 
 
-// const getCartSummary = () => {
-//     const { userCart } = getUserCart();
-//     if (!userCart || userCart.products.length === 0) {
-//         return { totalItems: 0, totalPrice: 0, products: [] };
-//     }
-
-//     const totalItems = userCart.products.reduce(
-//         (sum, p) => sum + p.quantity, 0
-//     );
-//     const totalPrice = userCart.products.reduce(
-//         (sum, p) => sum + p.price * p.quantity, 0
-//     );
-
-//     return {
-//         totalItems,
-//         totalPrice: parseFloat(totalPrice.toFixed(2)),
-//         products: userCart.products,
-//     };
-// };
-
 export {
     addToCart,
     getMyCart,
     removeFromCart,
     updateQuantity,
+    toggleProductSelection,
+    getCartSummary,
+    getCartSubTotal,
     // clearCart,
-    // getCartSummary,
+
 };
 

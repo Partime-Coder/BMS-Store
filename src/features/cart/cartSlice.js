@@ -26,8 +26,12 @@ export const cartSlice = createSlice({
       );
       if (product) product.quantity = action.payload.quantity;
     },
+    toggleSelectProduct: (state, action) => {
+      const product = state.products.find((p) => p.productId === action.payload);
+      if (product) product.isSelected = !product.isSelected;
+    },
   },
 });
 
-export const { setCart, removeFromCart, updateProductQuantity } = cartSlice.actions;
+export const { setCart, removeFromCart, updateProductQuantity, toggleSelectProduct   } = cartSlice.actions;
 export default cartSlice.reducer;
