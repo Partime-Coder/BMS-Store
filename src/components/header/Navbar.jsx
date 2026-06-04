@@ -1,5 +1,5 @@
 import React from 'react'
-import { Logo, SearchInput, CartButton, ProfileButton
+import { Logo, SearchInput, CartButton, ProfileButton , CartBadge
  } from '../index.js'
 import { Link } from 'react-router'
 Link
@@ -23,9 +23,7 @@ function Navbar() {
           {/* RIGHT 40% */}
           <div className='flex items-center justify-end gap-6 flex-[0.4]'>
             <ProfileButton />
-            <Link to="/cart">
-              <span>Cart</span>
-            </Link>
+            <CartBadge/>
             <span>Wishlist</span>
           </div>
 

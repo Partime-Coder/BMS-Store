@@ -6,6 +6,8 @@ import { useDispatch } from 'react-redux';
 import { login } from './features/user/authSlice.js';
 import { getMyCart } from './services/cartServices/cartService.js';
 import { setCart } from './features/cart/cartSlice.js';
+import { getMyWishlist } from './services/wishlistServices/wishlistService.js';
+import { setWishlistState } from './features/wishlist/wishlistSlice.js';
 
 function App() {
   const dispatch = useDispatch();
@@ -15,6 +17,8 @@ function App() {
       dispatch(login(sessionUser));
       const userCart = getMyCart(sessionUser?.id);
       dispatch(setCart(userCart));
+      const userWishlist = getMyWishlist(sessionUser?.id);
+      dispatch(setWishlistState(userWishlist));
     };
   }, [dispatch]);
   return (

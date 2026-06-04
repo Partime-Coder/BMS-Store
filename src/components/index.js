@@ -49,10 +49,6 @@ import CartItemsLayout from "./pageUI/cartPageUI/CartItemsLayout";
 import CartSummery from "./pageUI/cartPageUI/CartSummery";
 import CartItemAction from "./pageUI/cartPageUI/CartItemAction";
 import CartItemToggle from "./pageUI/cartPageUI/CartItemToggle";
-import CartZeroItemsUI from "./pageUI/cartPageUI/CartZeroItemsUI";
-
-
-
 
 export {
     Container,
@@ -96,5 +92,4 @@ export {
     CartSummery,
     CartItemAction,
     CartItemToggle,
-    CartZeroItemsUI,
 }

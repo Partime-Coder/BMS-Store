@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { CartButton } from '../../index.js'
+import { CartButton, WishlistButton } from '../../index.js'
 
 function ProductAction({ product }) {
   const [qty, setQty] = useState(1)
@@ -21,12 +21,10 @@ function ProductAction({ product }) {
         >+</button>
       </div>
       <div className=" w-full flex flex-col md:flex-row gap-2.5 ">
-        {/* Add to Cart — connect to cart slice later */}
+        
         <CartButton product={product} quantity={qty} />
-        {/* Wishlist — connect to wishlist slice later */}
-        <button className="w-full py-2.5 rounded-full border border-gray-200 bg-gray-50 hover:bg-gray-100 text-sm font-medium text-gray-700 transition-colors">
-          Add to Wishlist
-        </button>
+        
+        <WishlistButton product={product} />
       </div>
     </div>
   )

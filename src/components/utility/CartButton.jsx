@@ -49,7 +49,11 @@ function CartButton({ product, quantity }) {
         w-full 
         text-xs sm:text-sm
         py-1.5 px-4 sm:px-6
-         border border-[#FCD200]'
+         border border-[#FCD200]
+           disabled:bg-[#FDE68A]
+    disabled:border-[#FDE68A]
+    disabled:text-[#6B7280]'
+         
     >{product.inStock ? isAdding ? 'Added' : 'Add to Cart' : 'Out of Stock'}</Button>
 }
 
