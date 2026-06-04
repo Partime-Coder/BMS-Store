@@ -13,7 +13,7 @@ export const wishlistSlice = createSlice({
     reducers: {
 
         setWishlistState: (state, action) => {
-            return action.payload;
+            return action.payload || initialState;
         },
 
         removeProduct: (state, action) => {
