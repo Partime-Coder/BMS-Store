@@ -1,5 +1,5 @@
 import React from 'react'
-import { CartButton } from '../index.js'
+import { CartButton, WishlistButton } from '../index.js'
 import { useNavigate } from 'react-router';
 
 
@@ -104,9 +104,7 @@ function ProductCard({ product }) {
                        {/* Add to Cart — connect to cart slice later */}
                        <CartButton product={product} />
                        {/* Wishlist — connect to wishlist slice later */}
-                       <button className="w-full py-2.5 rounded-full border border-gray-200 bg-gray-50 hover:bg-gray-100 text-sm font-medium text-gray-700 transition-colors">
-                         Add to Wishlist
-                       </button>
+                       <WishlistButton product={product} />
                      </div>
             </div>
         </div>

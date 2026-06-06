@@ -48,7 +48,7 @@ function CartButton({ product, quantity }) {
         className='mt-2
         w-full 
         text-xs sm:text-sm
-        py-1.5 px-4 sm:px-6
+        py-2.5 px-4 sm:px-6
          border border-[#FCD200]
            disabled:bg-[#FDE68A]
     disabled:border-[#FDE68A]

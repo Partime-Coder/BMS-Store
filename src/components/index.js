@@ -6,6 +6,7 @@ import SecondaryNav from "./header/SecondaryNav";
 import SearchInput from "./header/SearchInput";
 import ProfileButton from "./header/ProfileButton";
 import CartBadge from "./header/CartBadge";
+import WishlistBadge from "./header/WishlistBadge";
 
 import Footer from "./footer/Footer";
 import FooterMain from "./footer/FooterMain";
@@ -50,6 +51,13 @@ import CartSummery from "./pageUI/cartPageUI/CartSummery";
 import CartItemAction from "./pageUI/cartPageUI/CartItemAction";
 import CartItemToggle from "./pageUI/cartPageUI/CartItemToggle";
 
+import WishlistItemCard from "./pageUI/wishlistPageUI/WishlistItemCard";
+import RemoveFromWishlistButton from "./pageUI/wishlistPageUI/RemoveFromWishlistButton";
+
+
+
+
+
 export {
     Container,
     Footer,
@@ -84,6 +92,7 @@ export {
     ProductVerticalCard,
     Pagination,
     CartBadge,
+    WishlistBadge,
     WishlistButton,
     CartButton,  
     AddressForm,
@@ -92,4 +101,6 @@ export {
     CartSummery,
     CartItemAction,
     CartItemToggle,
+    WishlistItemCard,
+    RemoveFromWishlistButton,
 }

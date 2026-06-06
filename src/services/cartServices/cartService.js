@@ -47,6 +47,7 @@ const addToCart = (product, quantity = 1) => {
             productId: product.id,
             name: product.title,
             price: product.price,
+            description: product.description,
             discountedPrice: product.discountedPrice,
             discountPercentage: product.discountPercentage,
             image: product.thumbnail,

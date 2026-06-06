@@ -1,12 +1,11 @@
 import React from 'react'
-import { Logo, SearchInput, CartButton, ProfileButton , CartBadge
- } from '../index.js'
+import { Logo, SearchInput, CartButton, ProfileButton , CartBadge, WishlistBadge} from '../index.js'
 import { Link } from 'react-router'
-Link
+
 function Navbar() {
   return (
-    <div className='w-full  bg-InkBlack text-white'>
-      <div className='px-2'>
+    <div className='w-full   bg-InkBlack text-white'>
+      <div className='px-2 sm:px-5'>
 
         <div className='h-16 flex items-center gap-4'>
 
@@ -21,10 +20,10 @@ function Navbar() {
           </div>
 
           {/* RIGHT 40% */}
-          <div className='flex items-center justify-end gap-6 flex-[0.4]'>
+          <div className='flex items-center justify-end gap-2 sm:gap-3 flex-[0.4]'>
             <ProfileButton />
+            <WishlistBadge/>
             <CartBadge/>
-            <span>Wishlist</span>
           </div>
 
         </div>

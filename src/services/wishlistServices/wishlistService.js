@@ -13,7 +13,7 @@ const getUserWishlist = () => {
 
 // ─── Add to wishlist ─────────────────────────────────────────────
 const addToWishlist = (product) => {
-    if (!product || !product.id) throw new Error("Product is required!");
+    if (!product) throw new Error("Product is required!");
 
     const session = getSession();
     if (!session) throw new Error("User not logged in!");
@@ -39,13 +39,13 @@ const addToWishlist = (product) => {
     if (exists) throw new Error("Product already in wishlist!");
 
     userWishlist.products.push({
-        productId: product.id,
-        name: product.title,
+        productId: product.id || product.productId,
+        name: product.title || product.name,
         description: product.description,
         price: product.price,
         discountedPrice: product.discountedPrice,
         discountPercentage: product.discountPercentage,
-        image: product.thumbnail,
+        image: product.thumbnail || product.image,
         brand: product.brand,
         category: product.category,
         stock: product.stock,

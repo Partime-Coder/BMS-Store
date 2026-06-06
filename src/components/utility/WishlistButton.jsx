@@ -55,10 +55,10 @@ function WishlistButton({ product }) {
   hoverBgColor="hover:bg-gray-50"
   rounded="rounded-full"
   className="
-    mt-2
+    mt-2 
     w-full
     text-xs sm:text-sm
-    py-1.5 px-4 sm:px-6
+    py-2.5 px-4 sm:px-6
     border border-gray-200
     disabled:bg-gray-100
   "

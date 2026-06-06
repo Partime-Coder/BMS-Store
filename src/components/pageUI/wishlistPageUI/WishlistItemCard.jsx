@@ -1,27 +1,22 @@
 import React from 'react'
-import { CartButton, WishlistButton } from '../index.js'
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router'
+import {RemoveFromWishlistButton} from '../../index.js'
 
-function ProductVerticalCard({ product }) {
-
+function WishlistItemCard({ product }) {
     const navigate = useNavigate();
-
-
     if (!product) return null;
-
     const {
-        id,
-        title,
+        productId,
+        name,
         description,
         price,
         discountedPrice,
         discountPercentage,
-        thumbnail,
+        image,
     } = product;
-
     return (
-        <div
-            onClick={() => navigate(`/product/${product.id}`)}
+         <div
+            onClick={() => navigate(`/product/${productId}`)}
             className="
             bg-white border border-gray-200 
             p-3 cursor-pointer
@@ -32,8 +27,8 @@ function ProductVerticalCard({ product }) {
             {/* Image */}
             <div className="h-52  flex items-center justify-center p-3">
                 <img
-                    src={thumbnail}
-                    alt={title}
+                    src={image}
+                    alt={name}
                     className="max-h-full object-contain"
                 />
             </div>
@@ -42,7 +37,7 @@ function ProductVerticalCard({ product }) {
             <div className="flex flex-col flex-1 mt-3">
 
                 <h3 className="text-lg font-medium line-clamp-2 ">
-                    {title}
+                    {name}
                 </h3>
 
                 <p className="text-xs text-gray-600 mt-2 line-clamp-2">
@@ -64,17 +59,13 @@ function ProductVerticalCard({ product }) {
                     </span>
 
                 </div>
-
                 <div className="mt-auto pt-4">
-                   <CartButton product={product} />
-                </div>
-                <div className="mt-auto pt-4">
-                   <WishlistButton product={product} />
+                   <RemoveFromWishlistButton productId={productId}/>
                 </div>
 
             </div>
         </div>
-    );
+    )
 }
 
-export default ProductVerticalCard;
+export default WishlistItemCard

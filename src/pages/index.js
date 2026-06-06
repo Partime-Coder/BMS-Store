@@ -11,6 +11,7 @@ import WomensFashionPage from "./storePages/WomensFashionPage";
 import SearchPage from "./productPages/SearchPage";
 import ProductDetailPage from "./productPages/ProductDetailPage";
 import CartPage from "./productPages/CartPage";
+import WishlistPage from "./productPages/WishlistPage";
 
 import Login from "./authPages/Login";
 import SignUp from "./authPages/SignUp";
@@ -28,6 +29,7 @@ export{
     SearchPage,
     ProductDetailPage,
     CartPage,
+    WishlistPage,
     Login,
     SignUp,
 

@@ -1,5 +1,4 @@
 import React from 'react'
-import { getMyCart } from '../../services/cartServices/cartService'
 import { CartItemsLayout, CartSummery, Loader , Container,} from '../../components'
 import { BsCartX } from '../../assets/icons/icons.js'
 import { useSelector } from 'react-redux'

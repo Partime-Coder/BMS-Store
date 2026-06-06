@@ -18,6 +18,7 @@ import {
     SearchPage,
     ProductDetailPage,
     CartPage,
+    WishlistPage,
     Login,
     SignUp
  } from './pages/index.js'
@@ -83,6 +84,10 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <CartPage />,
+      },
+      {
+        path: "/wishlist",
+        element: <WishlistPage />,
       }
     ]
   },

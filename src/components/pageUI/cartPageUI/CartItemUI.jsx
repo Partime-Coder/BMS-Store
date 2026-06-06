@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
-// import { removeFromCart, updateQuantity } from '../../../services/cartServices/cartService';
 import { CartItemAction, CartItemToggle } from '../../index.js'
+import { useNavigate } from 'react-router';
+
 
 function CartItemUI({ item }) {
-
+const navigate = useNavigate();
   const {
     productId,
     name,
+    description,
     brand,
     category,
     image,
@@ -20,13 +22,14 @@ function CartItemUI({ item }) {
     isSelected,
   } = item;
 
-  
+
   return (
     <div
+    onClick={() => navigate(`/product/${productId}`)}
       className="
       flex gap-3 sm:gap-4
       bg-white border-t border-b  border-gray-200 
-      p-3 sm:p-4
+      p-3 sm:p-4 cursor-pointer
     "
     >
 
@@ -52,9 +55,12 @@ function CartItemUI({ item }) {
       <div className="flex flex-col flex-1 min-w-0 gap-1">
 
         {/* Title */}
-        <h3 className="text-sm sm:text-base font-medium leading-snug line-clamp-2 hover:text-[#C7511F]">
+        <h3 className="text-lg  font-medium leading-snug line-clamp-2 hover:text-[#C7511F]">
           {name}
         </h3>
+        <p className='text-xs text-gray-900 sm:text-base font-medium leading-snug line-clamp-2'>
+          {description}
+        </p>
 
         {/* Brand + Category */}
         <p className="text-[11px] sm:text-xs text-gray-500">
@@ -101,6 +107,7 @@ function CartItemUI({ item }) {
 
         {/* Actions */}
         <CartItemAction
+          data={item}
           productId={productId}
           quantity={quantity}
           stock={stock}
